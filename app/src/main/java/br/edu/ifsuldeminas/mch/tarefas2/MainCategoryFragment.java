@@ -98,12 +98,21 @@ public class MainCategoryFragment  extends Fragment {
                         info.position);
 
                 CategoryDAO categoryDAO = new CategoryDAO(getContext());
-                categoryDAO.delete(categorySelected);
 
-                Toast.makeText(getContext(), R.string.category_done,
-                        Toast.LENGTH_SHORT).show();
+                try {
+                    categoryDAO.delete(categorySelected);
 
-                updateCategories();
+                    Toast.makeText(getContext(), R.string.category_done,
+                            Toast.LENGTH_SHORT).show();
+
+                    updateCategories();
+                }catch (Exception e){
+                    Toast.makeText(getContext(),  R.string.category_remove_error,
+                            Toast.LENGTH_SHORT).show();
+
+                }
+
+
                 return true;
             }
         });
