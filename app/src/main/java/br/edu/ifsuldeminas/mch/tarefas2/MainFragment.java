@@ -19,6 +19,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.List;
 
+import br.edu.ifsuldeminas.mch.tarefas2.adapter.ListViewTaskAdapter;
 import br.edu.ifsuldeminas.mch.tarefas2.databinding.FragmentMainBinding;
 import br.edu.ifsuldeminas.mch.tarefas2.db.TaskDAO;
 import br.edu.ifsuldeminas.mch.tarefas2.domain.Task;
@@ -76,8 +77,7 @@ public class MainFragment extends Fragment {
         TaskDAO dao = new TaskDAO(getContext());
         List<Task> tasks = dao.listAll();
 
-        ArrayAdapter adapter = new ArrayAdapter(getContext(),
-                android.R.layout.simple_list_item_1, tasks);
+        ListViewTaskAdapter adapter = new ListViewTaskAdapter(tasks,getActivity());
 
         binding.todoList.setAdapter(adapter);
     }
